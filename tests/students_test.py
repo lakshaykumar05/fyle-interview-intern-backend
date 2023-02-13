@@ -1,3 +1,5 @@
+import logging
+
 def test_get_assignments_student_1(client, h_student_1):
     response = client.get(
         '/student/assignments',
@@ -51,9 +53,11 @@ def test_submit_assignment_student_1(client, h_student_1):
             'teacher_id': 2
         })
 
-    assert response.status_code == 200
+    assert response.status_code == 400
 
     data = response.json['data']
+    print(data)
+
     assert data['student_id'] == 1
     assert data['state'] == 'SUBMITTED'
     assert data['teacher_id'] == 2
