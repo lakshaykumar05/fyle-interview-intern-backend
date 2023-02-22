@@ -71,10 +71,6 @@ class Assignment(db.Model):
         assignment.teacher_id = teacher_id
         assignment.state = AssignmentStateEnum.SUBMITTED
 
-        # new_assignment = {'data': assignment}
-
-        # assertions.base_assert(400, new_assignment)
-
         db.session.flush()
         return assignment
 
